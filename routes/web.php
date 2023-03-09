@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VaksinController;
+use App\Http\Controllers\PemerintahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('warga')->midd
 Route::get('/vaksin/register', [VaksinController::class, 'daftarVaksin'])->middleware('warga');
 Route::post('/vaksin/register', [VaksinController::class, 'postDaftarVaksin'])->middleware('warga');
 
+
+Route::get('/pemerintah/user-management', [PemerintahController::class, 'userManagement'])->name('pemerintah')->middleware('pemerintah');
+Route::put('/pemerintah/user-management/{user:id}', [PemerintahController::class, 'roleUpdate'])->middleware('pemerintah');
+Route::get('/pemerintah/laporan-vaksin', [PemerintahController::class, 'laporanVaksin'])->middleware('pemerintah');
 // Route::get('/middleware-test', function() {
 //     return view('middleware-test');
 // })->middleware('auth');
