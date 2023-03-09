@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,9 @@ Route::get('/auth/login', [AuthController::class, 'login'])->name("login")->midd
 Route::post('/auth/login', [AuthController::class, 'loginPost']);
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 
-Route::get('/middleware-test', function() {
-    return view('middleware-test');
-})->middleware('auth');
+// Profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+
+// Route::get('/middleware-test', function() {
+//     return view('middleware-test');
+// })->middleware('auth');
