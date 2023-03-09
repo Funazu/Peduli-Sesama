@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VaksinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+
+
+// Vaksin
+Route::get('/vaksin/register', [VaksinController::class, 'daftarVaksin'])->name('vaksin')->middleware('auth');
+Route::post('/vaksin/register', [VaksinController::class, 'postDaftarVaksin'])->middleware('auth');
 
 // Route::get('/middleware-test', function() {
 //     return view('middleware-test');

@@ -22,4 +22,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function vaksin() {
+        return $this->hasMany(Vaksin::class);
+    }
+
 }
