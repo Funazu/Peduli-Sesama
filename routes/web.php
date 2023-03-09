@@ -20,17 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/auth/login', [AuthController::class, 'login'])->name("login")->middleware('guest');
+Route::get('/auth/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/auth/login', [AuthController::class, 'loginPost']);
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 // Profile
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'index'])->name('warga')->middleware('warga');
 
 
 // Vaksin
-Route::get('/vaksin/register', [VaksinController::class, 'daftarVaksin'])->name('vaksin')->middleware('auth');
-Route::post('/vaksin/register', [VaksinController::class, 'postDaftarVaksin'])->middleware('auth');
+Route::get('/vaksin/register', [VaksinController::class, 'daftarVaksin'])->middleware('warga');
+Route::post('/vaksin/register', [VaksinController::class, 'postDaftarVaksin'])->middleware('warga');
 
 // Route::get('/middleware-test', function() {
 //     return view('middleware-test');

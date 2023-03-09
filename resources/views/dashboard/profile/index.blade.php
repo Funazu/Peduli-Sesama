@@ -6,8 +6,19 @@
                 <div class="card-body">
                     <h3 class="text-center">Profile</h3>
                     <hr>
-                    <strong>Username</strong>
-                    <input type="text" class="form-control" value="{{ $data->username }}" disabled>
+                    <div class="form-group mb-2">
+                        <strong>Username</strong>
+                        <input type="text" class="form-control" value="{{ $data->username }}" disabled>
+                    </div>
+                    <div class="form-group mb-2">
+                        <strong>Role</strong>
+                        <input type="text" value="{{ $data->role }}" class="form-control" disabled>
+                    </div>
+                    <hr>
+                    <form action="/auth/logout" method="post">
+                        @csrf
+                        <button class="btn btn-danger">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
